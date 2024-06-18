@@ -12,7 +12,7 @@ services:
   liquibase:
     image: liquibase/liquibase
     container_name: liquibase
-    command: --log-level=FINE --url=jdbc:postgresql://postgres:5432/${POSTGRES_DB} --username=${POSTGRES_USER} --password=${POSTGRES_PASSWORD} --changelog-file=/changelogs/changelog-master.xml update
+    command: --url=jdbc:postgresql://postgres:5432/${POSTGRES_DB} --username=${POSTGRES_USER} --password=${POSTGRES_PASSWORD} --changelog-file=/changelogs/changelog-master.xml update
     volumes:
       - ./src:/liquibase/src
       - ./changelogs:/liquibase/changelogs
