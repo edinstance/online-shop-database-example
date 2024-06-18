@@ -5,5 +5,12 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
 
+        <!-- Release changelogs -->
+        <changeSet id="users_username_unique_constraint" author="edinstance" runOnChange="false">
+                <sqlFile path="../../src/sql/updates/shop.users_username_constraint.sql"
+                        relativeToChangelogFile="true"
+                        splitStatements="false"
+                        stripComments="false" />
+        </changeSet>
 
 </databaseChangeLog>
