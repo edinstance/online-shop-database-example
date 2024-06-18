@@ -12,5 +12,11 @@
                         splitStatements="false"
                         stripComments="false" />
         </changeSet>
+        <changeSet id="users_email_unique_constraint" author="edinstance" runOnChange="false">
+                <sqlFile path="../../src/sql/updates/shop.users_email_constraint.sql"
+                        relativeToChangelogFile="true"
+                        splitStatements="false"
+                        stripComments="false" />
+        </changeSet>
 
 </databaseChangeLog>
