@@ -17,7 +17,15 @@ liquibase --url=jdbc:postgresql://localhost:5432/${POSTGRES_DB} --username=${POS
 ```
 
 
+### Docker 
 
+To run the project using docker you need to: 
+
+- Set the enviroment variables in the [.env](.env) file, and example of what is needed is in the [.env.example](.env.example) file.
+- Then run this docker command
+```
+docker-compose up -d
+```
 
 
 
