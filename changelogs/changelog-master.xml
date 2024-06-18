@@ -8,5 +8,6 @@
     <!-- Release changelogs -->
     <include file="releases/schemas.xml" relativeToChangelogFile="true"></include>
     <include file="releases/tables.xml" relativeToChangelogFile="true"></include>
+    <include file="releases/updates.xml" relativeToChangelogFile="true"></include>
 
 </databaseChangeLog>

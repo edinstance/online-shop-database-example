@@ -1,4 +1,4 @@
-CREATE TABLE shop.users (
+CREATE TABLE IF NOT EXISTS shop.users (
     id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     name VARCHAR(128) NOT NULL,
