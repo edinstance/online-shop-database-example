@@ -36,4 +36,10 @@
                         splitStatements="false"
                         stripComments="false" />
         </changeSet>
+        <changeSet id="get_item_function" author="edinstance" runOnChange="false">
+                <sqlFile path="../../src/sql/functions/shop.get_item.sql"
+                        relativeToChangelogFile="true"
+                        splitStatements="false"
+                        stripComments="false" />
+        </changeSet>
 </databaseChangeLog>
