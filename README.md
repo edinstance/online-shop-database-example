@@ -27,6 +27,9 @@ docker-compose up -d
 ```
 
 
+## Snapshots 
 
-
-
+There is an example snapshot in the [snapshots](./snapshots/) directory and to create a json snapshot you can use this command.
+```
+liquibase snapshot --url=jdbc:postgresql://localhost:5432/${POSTGRES_DB} --snapshot-format=json --output-file=snapshots/snapshot.json
+```
