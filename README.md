@@ -1,7 +1,6 @@
 # Online Store Example
 
-This project serves as a playground for testing out different backends. It is currently focused on a psql database and liquibase. 
-
+This project is for me to practice and expand my database knowledge. Currently it is composed of a psql database and uses liquibase for change management.
 
 ## How to Run
 
