@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  create-snapshot:
     runs-on: ubuntu-latest
 
     steps:
@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v4
     
       - name: Create the Database
-        run: docker-compose -f docker-compose.yml up -d postgres
+        run: docker compose -f docker-compose.yml up -d postgres
 
       - name: Wait for the Database to be ready
         run: |
