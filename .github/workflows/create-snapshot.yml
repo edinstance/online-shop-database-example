@@ -29,6 +29,8 @@ jobs:
         uses: liquibase-github-actions/snapshot@v4.29.1
         with:
           url: "jdbc:postgresql://localhost:5432/${{ secrets.POSTGRES_DB }}"
+          username: ${{ secrets.POSTGRES_USER }}
+          password: ${{ secrets.POSTGRES_PASSWORD }}
           driver: "org.postgresql.Driver"
           outputFile: "snapshot.json"
 
