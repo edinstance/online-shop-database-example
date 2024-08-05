@@ -1,0 +1,38 @@
+name: create-snapshot
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+    
+      - name: Create the Database
+        run: docker-compose -f docker-compose.yml up -d postgres
+
+      - name: Wait for the Database to be ready
+        run: |
+          until docker exec postgres pg_isready; do
+            echo "Waiting for PostgreSQL to be ready..."
+            sleep 5
+          done
+
+      - name: Run Liquibase snapshot
+        uses: liquibase-github-actions/snapshot@v4.29.1
+        with:
+          url: "jdbc:postgresql://localhost:5432/${{ secrets.POSTGRES_DB }}"
+          driver: "org.postgresql.Driver"
+          outputFile: "snapshot.json"
+
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4.3.5
+        with:
+          name: Database Snapshot
+          path: snapshot.json
+
+      - name: Clean up
+        run: docker-compose down
