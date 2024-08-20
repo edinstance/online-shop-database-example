@@ -1,8 +1,7 @@
 name: Supabase Deploy
 on:
   workflow_dispatch:
-  pull_request:
-# Temporarily added Pull request trigger to test the workflow
+
 
 jobs:
   supabase-deploy:
