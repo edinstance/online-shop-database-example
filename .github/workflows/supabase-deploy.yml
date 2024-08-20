@@ -37,6 +37,7 @@ jobs:
           else
             echo "Liquibase ran successfully with exit code $exit_code"
           fi
+          
       # This command checks if the liquibase container ran successfully.
       - name: Update Supabase database using liquibase
         run: docker compose up liquibase

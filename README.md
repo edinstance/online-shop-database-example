@@ -33,3 +33,8 @@ There is an example snapshot in the [snapshots](./snapshots/) directory and to c
 ```
 liquibase snapshot --url=jdbc:postgresql://localhost:5432/${POSTGRES_DB} --snapshot-format=json --output-file=snapshots/snapshot.json
 ```
+
+
+## Deployment 
+
+There is a workflow for deploying this database to [supabase](https://supabase.com/), the workflow is here [.github/workflows/supabase-deploy.yml](.github/workflows/supabase-deploy.yml). You need to configure GitHub secrets to run this and you need to manually run it. 
