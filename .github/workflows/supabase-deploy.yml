@@ -1,0 +1,53 @@
+name: Supabase Deploy
+on:
+  workflow_dispatch:
+
+jobs:
+  supabase-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      # This fetches the repository's code and places it in the working directory of the workflow runner.
+
+      - name: Run database
+        run: docker compose up postgres -d
+        env:
+          POSTGRES_DB: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+      # This command starts the postgres container in the background.
+
+      - name: Run liquibase
+        run: docker compose up liquibase
+        env:
+          POSTGRES_DB: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_URL: postgres
+      # This command starts the liquibase container and runs the liquibase update command.
+
+      - name: Check if liquibase ran successfully
+        run: |
+          exit_code=$(docker inspect liquibase --format='{{.State.ExitCode}}')
+          if [ "$exit_code" -ne 0 ]; then
+            echo "Liquibase failed with exit code $exit_code"
+            exit 1
+          else
+            echo "Liquibase ran successfully with exit code $exit_code"
+          fi
+          
+      # This command checks if the liquibase container ran successfully.
+      - name: Update Supabase database using liquibase
+        run: docker compose up liquibase
+        env:
+          POSTGRES_DB: ${{ secrets.SUPABASE_DB }}
+          POSTGRES_USER: ${{ secrets.SUPABASE_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+          POSTGRES_URL: ${{ secrets.SUPABASE_URL }}
+      # This command updates the Supabase database using liquibase.
+
+      - name: Stop containers
+        run: docker compose down
+    # This command stops the running containers.
