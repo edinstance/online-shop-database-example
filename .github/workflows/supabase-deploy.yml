@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+    # This fetches the repository's code and places it in the working directory of the workflow runner.
 
       - name: Run database
         run: docker compose up postgres -d
@@ -18,6 +19,7 @@ jobs:
           POSTGRES_DB: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
+    # This command starts the postgres container in the background.
 
       - name: Run liquibase
         run: docker compose up liquibase
@@ -26,6 +28,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
           POSTGRES_URL: postgres
+    # This command starts the liquibase container and runs the liquibase update command.
 
       - name: Check if liquibase ran successfully
         run: |
@@ -36,6 +39,7 @@ jobs:
           else
             echo "Liquibase ran successfully with exit code $exit_code"
           fi
+    # This command checks if the liquibase container ran successfully.
     
       - name: Update Supabase database using liquibase
         run: docker compose up liquibase
@@ -44,6 +48,8 @@ jobs:
           POSTGRES_USER: ${{ secrets.SUPABASE_USER }}
           POSTGRES_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
           POSTGRES_URL: ${{ secrets.SUPABASE_URL }}
+    # This command updates the Supabase database using liquibase.
 
       - name: Stop containers
         run: docker compose down
+    # This command stops the running containers.
