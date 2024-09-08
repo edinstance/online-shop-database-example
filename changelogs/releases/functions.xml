@@ -42,4 +42,10 @@
                         splitStatements="false"
                         stripComments="false" />
         </changeSet>
+        <changeSet id="get_nth_highest_item_price" author="edinstance" runOnChange="false">
+                <sqlFile path="../../src/sql/functions/shop.get_nth_highest_item_price.sql"
+                        relativeToChangelogFile="true"
+                        splitStatements="false"
+                        stripComments="false" />
+        </changeSet>
 </databaseChangeLog>
