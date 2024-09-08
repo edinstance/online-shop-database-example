@@ -30,5 +30,11 @@
                         splitStatements="false"
                         stripComments="false" />
         </changeSet>
+        <changeSet id="update_create_item" author="edinstance" runOnChange="false">
+                <sqlFile path="../../src/sql/updates/shop.update_create_item.sql"
+                        relativeToChangelogFile="true"
+                        splitStatements="false"
+                        stripComments="false" />
+        </changeSet>
 
 </databaseChangeLog>
