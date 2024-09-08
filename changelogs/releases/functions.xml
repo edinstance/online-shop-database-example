@@ -54,4 +54,10 @@
                         splitStatements="false"
                         stripComments="false" />
         </changeSet>
+         <changeSet id="insert_or_update_item" author="edinstance" runOnChange="false">
+                <sqlFile path="../../src/sql/functions/shop.insert_or_update_item.sql"
+                        relativeToChangelogFile="true"
+                        splitStatements="false"
+                        stripComments="false" />
+        </changeSet>
 </databaseChangeLog>
