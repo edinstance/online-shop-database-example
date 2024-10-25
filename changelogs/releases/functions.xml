@@ -42,4 +42,22 @@
                         splitStatements="false"
                         stripComments="false" />
         </changeSet>
+        <changeSet id="get_nth_highest_item_price" author="edinstance" runOnChange="false">
+                <sqlFile path="../../src/sql/functions/shop.get_nth_highest_item_price.sql"
+                        relativeToChangelogFile="true"
+                        splitStatements="false"
+                        stripComments="false" />
+        </changeSet>
+        <changeSet id="rank_item_quantity" author="edinstance" runOnChange="false">
+                <sqlFile path="../../src/sql/functions/shop.rank_item_quantity.sql"
+                        relativeToChangelogFile="true"
+                        splitStatements="false"
+                        stripComments="false" />
+        </changeSet>
+         <changeSet id="insert_or_update_item" author="edinstance" runOnChange="false">
+                <sqlFile path="../../src/sql/functions/shop.insert_or_update_item.sql"
+                        relativeToChangelogFile="true"
+                        splitStatements="false"
+                        stripComments="false" />
+        </changeSet>
 </databaseChangeLog>
